@@ -1,0 +1,53 @@
+export const APP_ROUTER = {
+  INDEX: "/",
+  MY_NETWORK: "/mynetwork",
+  DISCOVER_HUB: "mynetwork/discover-hub/",
+  EVENTS: "/mynetwork/network-manager/events/",
+  JOBS: "/jobs",
+  MESSAGING: "/messaging",
+  NOTIFICATION: "/notifications",
+  PREMIUM: "/premium",
+  PROFILE: "/profile",
+  MY_ITEMS: "/my-items",
+  GROUPS: "/groups",
+  FOLLOWED_HASHTAGS: "/following",
+  LOGIN: "/auth/login",
+  REGISTER: "/auth/register",
+};
+export const menuItems = [
+  {
+    title: "Home",
+    icon: "entypo:home",
+    activeIcon: "fa:home",
+    url: APP_ROUTER.INDEX,
+    key: "/",
+  },
+  {
+    title: "My Network",
+    icon: "eva:people-fill",
+    activeIcon: "bi:people-fill",
+    url: APP_ROUTER.MY_NETWORK,
+    key: "/mynetwork",
+  },
+  {
+    title: "Jobs",
+    icon: "uil:bag",
+    activeIcon: "uis:bag",
+    url: APP_ROUTER.JOBS,
+    key: "/jobs",
+  },
+  {
+    title: "Messaging",
+    icon: "eva:message-square-fill",
+    activeIcon: "jam:messages-f",
+    url: APP_ROUTER.MESSAGING,
+    key: "/messaging",
+  },
+  {
+    title: "Notifications",
+    icon: "dashicons:bell",
+    activeIcon: "entypo:bell",
+    url: APP_ROUTER.NOTIFICATION,
+    key: "/notifications",
+  },
+];
