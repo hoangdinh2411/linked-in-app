@@ -49,7 +49,6 @@ const WorkAndPremium = () => {
       >
         <DialogTitle>
           <Typography
-            component="h1"
             className="flex items-center justify-between text-[28px]"
           >
             Work{" "}

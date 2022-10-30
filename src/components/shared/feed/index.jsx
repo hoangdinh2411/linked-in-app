@@ -2,11 +2,12 @@ import Avatar from 'components/ui/Avatar'
 import React from 'react'
 import ScaffoldLayout from '../layouts/ScaffoldLayout'
 import logo from 'assets/images/avatar.jpg'
-import { Box, Button } from '@mui/material'
+import { Box } from '@mui/material'
 import styled from '@emotion/styled'
 import theme from 'styles/theme'
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react'
+import Button from 'components/ui/Button'
 
 // 1w / 1d/ 1h
 const CustomFeed = styled(Box)`
@@ -183,7 +184,7 @@ const Feed = () => {
               </p>
               <p className='feed-shared-actor__sub-description'>1w</p>
             </article>
-            <Button size='small'>
+            <Button variant='outline' size='small'>
               <Icon icon='ant-design:plus-outlined' />
               Follow
             </Button>

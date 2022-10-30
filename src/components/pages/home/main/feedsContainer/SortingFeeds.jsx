@@ -12,7 +12,7 @@ const SortingFeeds = () => {
   return (
     <div className='filter'>
       <p className='filter__line'></p>
-      <span class='filter__by'>
+      <span className='filter__by'>
         Sort by:{' '}
         <Select
           value={sortingBy}

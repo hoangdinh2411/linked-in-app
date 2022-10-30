@@ -1,12 +1,12 @@
 import React from "react";
 import FeedsContainer from "./feedsContainer";
-import ShareBoxFeedEntry from "./shareBoxFeedEntry";
+import FeedEntry from "./feedEntry";
 import MainContainer from "./style";
 
 const Main = () => {
   return (
     <MainContainer component="main">
-      <ShareBoxFeedEntry />
+      <FeedEntry />
       <FeedsContainer />
     </MainContainer>
   );

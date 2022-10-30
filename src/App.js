@@ -1,9 +1,6 @@
-import Routing from "./routers";
-
+import Routing from './routers'
 function App() {
-  return (
-    <Routing />
-  );
+  return <Routing />
 }
 
-export default App;
+export default App

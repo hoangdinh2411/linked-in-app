@@ -4,7 +4,7 @@ import useSWR from "swr";
 const UseCustomSWR = (key, formData, options = {} ) => {
   const { data, error, ...other } = useSWR(
     key,
-    axiosConfig.post("/auth/register",formData).then((res) => console.log(res)),
+    axiosConfig.post("/client/auth/register",formData).then((res) => console.log(res)),
     options
   );
   return {

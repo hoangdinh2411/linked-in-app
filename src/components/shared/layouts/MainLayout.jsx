@@ -11,6 +11,7 @@ const LayoutCustomStyle = styled(Box)`
   display: flex;
   justify-content: center;
   padding-top: 52px;
+  color: '${theme.text}';
   .content-wrapper {
     width: ${theme.widthOnDesktop};
     min-height: 1000vh;

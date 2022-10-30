@@ -4,3 +4,13 @@ export const APP_CONFIG={
     description: 'The author is William',
     locale: 'en',
 }
+
+export const enumVisibilityFeed = {
+    all: 'anyone',
+    connections: 'connections',
+    onlyMe: 'only me',
+  }
+  export const enumVisibilityComment = {
+    connections: 'connections',
+    none: 'none',
+  }

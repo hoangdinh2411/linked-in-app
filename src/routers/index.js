@@ -19,7 +19,7 @@ const Routing = () => {
           <Route path={APP_ROUTER.PROFILE} element={<Feed />} />
         </Route>
         <Route path="/auth" element={<AuthLayout />}>
-          <Route path={APP_ROUTER.LOGIN} element={<Login />} />
+          <Route index path={APP_ROUTER.LOGIN} element={<Login />} />
           <Route path={APP_ROUTER.REGISTER} element={<Register />} />
         </Route>
       </Routes>
