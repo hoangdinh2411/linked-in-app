@@ -11,9 +11,10 @@ import {
   Transition,
 } from 'react-transition-group'
 import FeedEntryForm from './FeedEntryForm'
-import logo from 'assets/images/LinkedIn_icon.png'
 import CustomFeedEntryForm from './style'
 import { optionsForVisibility } from 'utils/constants'
+import defaultAvatar from 'assets/images/default_avatar_user.png'
+import useUserSelectors from 'store/selectors/userSelector'
 
 const TransitionComponent = React.forwardRef(function Transition(props, ref) {
   return <Slide direction='left' ref={ref} {...props} />
@@ -30,6 +31,7 @@ const FeedEntry = () => {
   const [open, setOpen] = React.useState(false)
   const [side, setSide] = React.useState(0)
   const [newFeed, setNewFeed] = React.useState(initialNewFeed)
+  const { userDetailInStore } = useUserSelectors()
 
   const entryFormRef = React.useRef(null)
   const visibilityPostRef = React.useRef(null)
@@ -68,7 +70,15 @@ const FeedEntry = () => {
   return (
     <ScaffoldLayout p={3}>
       <Box component='section' className='flex items-center'>
-        <Avatar alt='logo' src={logo} width='46' height='46' className='mr-3' />
+        <Avatar
+          alt='logo'
+          src={
+            userDetailInStore.avatar ? userDetailInStore.avatar : defaultAvatar
+          }
+          width='46'
+          height='46'
+          className='mr-3'
+        />
         <Button
           onClick={handleClickOpen}
           textPosition='left'

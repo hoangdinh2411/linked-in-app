@@ -44,9 +44,9 @@ const AuthLayout = () => {
         </Link>
       </section>
       <section className='flex min-h-[100vh]'>
-        <aside className='shadow-md p-6 rounded-md m-auto bg-white w-[352px] text-center '>
+        <div className='shadow-md p-6 rounded-md m-auto bg-white  text-center '>
           <Outlet />
-        </aside>
+        </div>
       </section>
     </BoxCustomStyle>
   )

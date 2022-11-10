@@ -1,15 +1,14 @@
 import Avatar from 'components/ui/Avatar'
 import React from 'react'
 import ScaffoldLayout from '../layouts/ScaffoldLayout'
-import logo from 'assets/images/avatar.jpg'
 import { Box } from '@mui/material'
 import styled from '@emotion/styled'
 import theme from 'styles/theme'
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 import Button from 'components/ui/Button'
-
-// 1w / 1d/ 1h
+import defaultAvatar from 'assets/images/default_avatar_user.png'
+import useUserSelectors from 'store/selectors/userSelector'
 const CustomFeed = styled(Box)`
   padding: 16px 0;
   .feed__header {
@@ -162,7 +161,8 @@ const CustomFeed = styled(Box)`
 `
 const Feed = () => {
   const [seeMoreContent, setSeeMoreContent] = React.useState(false)
-  const img = true
+  const { userDetailInStore } = useUserSelectors()
+
   return (
     <ScaffoldLayout className='py-3'>
       <CustomFeed component='section'>
@@ -170,7 +170,11 @@ const Feed = () => {
           <div className='feed__header'>
             <Avatar
               alt='logo'
-              src={logo}
+              src={
+                userDetailInStore.avatar
+                  ? userDetailInStore.avatar
+                  : defaultAvatar
+              }
               width='46'
               height='46'
               className='mr-3'
@@ -211,9 +215,9 @@ const Feed = () => {
               )}
             </article>
 
-            {img && (
+            {defaultAvatar && (
               <figure className='feed__content__images '>
-                <img src={logo} alt='' className='feed__content__img' />
+                <img src={defaultAvatar} alt='' className='feed__content__img' />
               </figure>
             )}
           </section>

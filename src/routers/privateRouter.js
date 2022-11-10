@@ -1,9 +1,9 @@
-import MainLayout from "components/shared/layouts/MainLayout";
-import React from "react";
-import { Navigate } from "react-router-dom";
+import MainLayout from 'components/shared/layouts/MainLayout'
+import { Navigate } from 'react-router-dom'
+import useUserSelectors from 'store/selectors/userSelector'
 const PrivateRouter = () => {
-  const auth = true;
-  return auth ? <MainLayout  /> : <Navigate to="/auth/login" />;
-};
+  const { userDetailInStore } = useUserSelectors()
+  return userDetailInStore ? <MainLayout /> : <Navigate to='/auth/login' />
+}
 
-export default PrivateRouter;
+export default PrivateRouter

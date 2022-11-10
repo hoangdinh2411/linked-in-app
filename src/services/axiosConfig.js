@@ -1,40 +1,62 @@
-import axios from "axios";
+import axios from 'axios'
+import { apiURLs, APP_ROUTER } from 'utils/constants'
+import {
+  getValueFromSession,
+  getItemInLocalStorage,
+  removeItemInLocalStorage,
+  setValueInSession,
+  removeValueInSession,
+} from '../utils/helpers'
 
 const axiosConfig = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  timeout: 1000,
+  timeout: 5000,
   headers: {
-    "Context-Type": "application/json",
+    'Context-Type': 'application/json',
   },
-});
+})
 // axiosConfig.defaults.withCredentials = true;
 
 axiosConfig.interceptors.request.use(
-  function (config) {
-    // if (config.method === "get" && config.url === "/refresh-token") {
-    //   return config;
-    // } else {
-    //   const token = "";
-    //   config.headers["Authorization"] = "Bearer " + token;
-    // }
-    console.log(config);
-
-    return config;
+  function (req) {
+    let access_token = getValueFromSession('access_token')
+    req.headers['Authorization'] = `Bearer ${access_token}`
+    return req
   },
   function (error) {
-    console.log("request error ", error);
-    return Promise.reject(error);
+    console.log('request error ', error)
+    return Promise.reject(error)
   }
-);
+)
 
 axiosConfig.interceptors.response.use(
   function (res) {
-    return res
+    if (res.data?.message?.includes('access token')) {
+      getNewAccessToken()
+      return
+    }
+    return res.data
   },
   function (error) {
-    console.log("response error ", error);
-    return Promise.reject(error);
+    console.log('response error ', error)
+    return Promise.reject(error)
   }
-);
-
-export default axiosConfig;
+)
+function getNewAccessToken() {
+  const refresh_token = getItemInLocalStorage('refresh_token')
+  axiosConfig
+    .post(apiURLs.auth.new_access_token, {
+      refresh_token,
+    })
+    .then((res) => {
+      if (res.success) {
+        setValueInSession('access_token', res.new_access_token)
+        return
+      } else {
+        window.location = APP_ROUTER.LOGIN
+        removeItemInLocalStorage('refresh_token')
+        removeValueInSession('access_token')
+      }
+    })
+}
+export default axiosConfig

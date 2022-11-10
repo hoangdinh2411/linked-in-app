@@ -1,17 +1,17 @@
-import axiosConfig from "services/axiosConfig";
-import { SWRConfig } from "swr";
+import { configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
 
-const SWRConfigProvider = ({ children }) => {
-  return (
-    <SWRConfig
-      value={{
-        refreshInterval: 3000,
-        
-      }}
-    >
-      {children}
-    </SWRConfig>
-  );
-};
+import appReducer from './slices/appSlice'
+import userReducer from './slices/userSlice'
+export const store = configureStore({
+    reducer:{
+        app: appReducer,
+        user:userReducer
+    }
+})
 
-export default SWRConfigProvider;
+const StoreProvider = ({children}) => {
+  return <Provider store={store}>{children}</Provider>
+}
+
+export default StoreProvider

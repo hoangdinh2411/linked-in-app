@@ -8,7 +8,6 @@ const MainContainer = styled(Box)`
     margin: 8px 0;
     display: flex;
     align-items: center;
-    box
     &__line {
       position: relative;
       margin-right: 8px;
