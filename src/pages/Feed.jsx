@@ -1,8 +1,8 @@
-import HomePageTemplate from "components/pages/home";
-import React from "react";
+import HomePageTemplate from 'components/pages/home'
+import React from 'react'
 
 const Feed = () => {
-  return <HomePageTemplate />;
-};
+  return <HomePageTemplate />
+}
 
-export default Feed;
+export default Feed

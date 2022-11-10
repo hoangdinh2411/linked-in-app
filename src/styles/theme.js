@@ -17,7 +17,8 @@ const widthOnDesktop = '1128px'
 const heightNavbar = '52px'
 const theme = {
   primary_background: color.black_10,
-
+  loading_background:color.blue_50,
+  loading_line_background:color.blue_70,
   like_background: color.blue_70,
   link: color.blue_70,
   link_hover: color.blue_50,

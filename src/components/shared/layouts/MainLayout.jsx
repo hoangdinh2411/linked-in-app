@@ -1,8 +1,10 @@
-import styled from "@emotion/styled";
-import { Box } from "@mui/material";
-import { Outlet } from "react-router-dom";
-import theme from "styles/theme";
-import Navbar from "../navbar";
+import styled from '@emotion/styled'
+import { Box } from '@mui/material'
+import useUserAPI from 'hooks/useUserAPI'
+import React, { useState } from 'react'
+import { Outlet, useNavigate } from 'react-router-dom'
+import theme from 'styles/theme'
+import Navbar from '../navbar'
 // import Navbar from "./components/shared/Navbar";
 const LayoutCustomStyle = styled(Box)`
   min-height: 100vh;
@@ -21,18 +23,22 @@ const LayoutCustomStyle = styled(Box)`
     justify-content: space-between;
     align-items: flex-start;
   }
-`;
+`
 
- const MainLayout = () => {
+const MainLayout = () => {
+  const { getUserDetail } = useUserAPI()
+  React.useEffect(() => {
+    getUserDetail()
+  }, [])
+  
   return (
     <LayoutCustomStyle>
       <Navbar />
-      <Box component="div" className="content-wrapper">
+      <Box component='div' className='content-wrapper'>
         <Outlet />
       </Box>
     </LayoutCustomStyle>
-  );
-};
-
+  )
+}
 
 export default MainLayout

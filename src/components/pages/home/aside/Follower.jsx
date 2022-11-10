@@ -5,7 +5,7 @@ import Avatar from 'components/ui/Avatar'
 import Button from 'components/ui/Button'
 import React from 'react'
 import theme from 'styles/theme'
-
+import defaultAvatar from 'assets/images/default_avatar_user.png'
 const CustomFollower = styled(Box)`
   .follower__title {
     font-size: 14px;
@@ -33,7 +33,7 @@ const Follower = (props) => {
     <aside className='flex items-start mb-4'>
       <Avatar
         alt='logo'
-        // src={``}
+        src={defaultAvatar}
         width='48'
         height='48'
         className='mr-3'

@@ -4,9 +4,9 @@ import Button from 'components/ui/Button'
 import React from 'react'
 import { Mention } from 'react-mentions'
 import Mentions from 'components/ui/Mention'
-import logo from 'assets/images/LinkedIn_icon.png'
 import { Icon } from '@iconify/react'
-
+import defaultAvatar from 'assets/images/default_avatar_user.png'
+import useUserSelectors from 'store/selectors/userSelector'
 const fakeHashtag = [
   {
     id: 1,
@@ -24,6 +24,7 @@ const fakeHashtag = [
 export const FeedEntryForm = (props) => {
   const { setNewFeed, newFeed, changeContent, changeSide } = props
   const textAreaRef = React.useRef(null)
+  const { userDetailInStore } = useUserSelectors()
 
   const addNewHashTag = () => {
     setNewFeed({
@@ -61,18 +62,22 @@ export const FeedEntryForm = (props) => {
         <div>
           <Avatar
             alt='logo'
-            src={logo}
+            src={
+              userDetailInStore.avatar
+                ? userDetailInStore.avatar
+                : defaultAvatar
+            }
             width='46'
             height='46'
             className='mr-3'
           />
           <aside className='setting'>
-            <p className='setting__user-name'>William Dinh</p>
+            <p className='setting__user-name'>{userDetailInStore.full_name}</p>
             <span>
               <Button
                 size='small'
                 className='setting__visibility'
-                onClick={() =>changeSide(1)}
+                onClick={() => changeSide(1)}
               >
                 <Icon icon={newFeed.visibleOnFeed.icon} />
                 {newFeed.visibleOnFeed.label}

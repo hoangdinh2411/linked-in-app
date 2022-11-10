@@ -15,6 +15,7 @@ export const APP_ROUTER = {
   FOLLOWED_HASHTAGS: '/following',
   LOGIN: '/auth/login',
   REGISTER: '/auth/register',
+  CONFIRMATION: '/auth/confirmation',
 }
 export const menuItems = [
   {
@@ -109,4 +110,15 @@ export const optionsForVisibility = {
       },
     ],
   },
+}
+
+export const apiURLs= {
+  auth: {
+    register: '/client/auth/register',
+    login: '/client/auth/login',
+    new_access_token: '/client/auth/new-access-token',
+  },
+  user:{
+    detail:'/user/detail'
+  }
 }

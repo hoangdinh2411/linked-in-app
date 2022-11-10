@@ -5,11 +5,14 @@ import { Link } from 'react-router-dom'
 import ScaffoldLayout from 'components/shared/layouts/ScaffoldLayout'
 import { APP_ROUTER } from 'utils/constants'
 import theme from 'styles/theme'
-import avatarImage from 'assets/images/avatar.jpg'
 import backgroundImage from 'assets/images/background-photo.jpg'
 import Avatar from 'components/ui/Avatar'
+import defaultAvatar from 'assets/images/default_avatar_user.png'
+import useUserSelectors from 'store/selectors/userSelector'
 
 function Identity() {
+  const {userDetailInStore} =useUserSelectors()
+
   return (
     <ScaffoldLayout>
       <Card
@@ -39,7 +42,7 @@ function Identity() {
             >
               <Box component='div' className='relative h-[52px]'>
                 <Avatar
-                  src={avatarImage}
+                  src={userDetailInStore.avatar ? userDetailInStore.avatar : defaultAvatar}
                   width='72'
                   height='72'
                   className=' border-2 border-solid border-white m-0 absolute top-[-36px] left-[50%] translate-x-[-50%]'
@@ -51,7 +54,7 @@ function Identity() {
                 component='p'
                 className='text-center m-0 text-md font-semibold text-black-900'
               >
-                William Dinh
+              {userDetailInStore.full_name}
               </Typography>
             </Link>
             <Typography

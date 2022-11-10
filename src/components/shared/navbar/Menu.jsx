@@ -3,12 +3,13 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Link, useLocation } from "react-router-dom";
 import Avatar from "components/ui/Avatar";
-import avatarImage from "assets/images/avatar.jpg";
 import { menuItems } from "utils/constants";
 import theme from "styles/theme";
+import useUserSelectors from "store/selectors/userSelector";
+import defaultAvatar from 'assets/images/default_avatar_user.png'
 const Menu = () => {
   const location = useLocation();
-  console.log(location);
+  const {userDetailInStore} =useUserSelectors()
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -67,7 +68,7 @@ const Menu = () => {
         onClick={handleClick}
         aria-describedby="dropdown-menu"
       >
-        <Avatar alt="Me" src={avatarImage} />
+        <Avatar alt="Me" src={userDetailInStore.avatar ? userDetailInStore.avatar : defaultAvatar} />
         <Typography component="span">
           Me <Icon icon="bxs:down-arrow" />
         </Typography>

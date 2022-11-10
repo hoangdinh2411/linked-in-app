@@ -1,20 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import "./index.css";
-import { ThemeProvider } from "@mui/material";
-import customTheme from "./styles/muiTheme";
-import App from "./App";
-import SWRConfigProvider from "store";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import './index.css'
+import { ThemeProvider } from '@mui/material'
+import customTheme from './styles/muiTheme'
+import App from './App'
+import StoreProvider from 'store'
+
+ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={customTheme}>
-      <BrowserRouter>
-        <SWRConfigProvider>
+    <StoreProvider>
+      <ThemeProvider theme={customTheme}>
+        <BrowserRouter>
           <App />
-        </SWRConfigProvider>
-      </BrowserRouter>
-    </ThemeProvider>
-  </React.StrictMode>
-);
+        </BrowserRouter>
+      </ThemeProvider>
+    </StoreProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+)
